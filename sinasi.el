@@ -59,7 +59,7 @@
 
 ;; Copied from Rinari and hacked accordingly.
 (defcustom sinasi-tags-file-name
-  "TAGS"
+  "tags"
   "Path to your TAGS file inside of your SproutCore project.  See `tags-file-name'."
   :group 'sinasi)
 
