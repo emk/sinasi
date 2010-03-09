@@ -250,7 +250,7 @@ This assumes you have a working Super key in your Emacs."
 
 ;;;###autoload
 (defun sinasi-launch ()
-  "Run `sinasi-minor-mode' if inside of a SproutCore projecct,
+  "Run `sinasi-minor-mode' if inside of a SproutCore project,
 otherwise turn `sinasi-minor-mode' off if it is on."
   ;; Copied from Rinari and hacked accordingly.
   (interactive)
