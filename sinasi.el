@@ -98,13 +98,88 @@
 ;;   apps/APP/resources/main_page.js
 (setf
  sinasi-jump-schema
- '((model
-    "m"
-    (("apps/\\1/tests/models/\\2.js" . "apps/\\1/models/\\2.js")
-     ("apps/\\1/fixtures/\\2.js"     . "apps/\\1/models/\\2.js")
+ '((test
+    "t"
+    (("apps/\\1/models/\\2.js"            . "apps/\\1/tests/models/\\2.js")
+     ("apps/\\1/fixtures/\\2.js"          . "apps/\\1/tests/models/\\2.js")
+     ("apps/\\1/controllers/\\2.js"       . "apps/\\1/tests/controllers/\\2.js")
+     ("apps/\\1/views/\\2.js"             . "apps/\\1/tests/views/\\2.js")
+     ("apps/\\1/resources/\\2.css"        . "apps/\\1/tests/views/\\2.js")
      ;; TODO: Handle default case.
      )
     t)
+   (model
+    "m"
+    (("apps/\\1/tests/models/\\2.js"       . "apps/\\1/models/\\2.js")
+     ("apps/\\1/fixtures/\\2.js"           . "apps/\\1/models/\\2.js")
+     ("apps/\\1/controllers/\\2s.js"       . "apps/\\1/models/\\2.js")
+     ("apps/\\1/tests/controllers/\\2s.js" . "apps/\\1/models/\\2.js")
+     ("apps/\\1/views/\\2.js"              . "apps/\\1/models/\\2.js")
+     ("apps/\\1/tests/views/\\2.js"        . "apps/\\1/models/\\2.js")
+     ("apps/\\1/resources/\\2.css"         . "apps/\\1/models/\\2.js")
+     ;; TODO: Handle default case.
+     )
+    t)
+   (fixture
+    "f"
+    (("apps/\\1/models/\\2.js"             . "apps/\\1/fixtures/\\2.js")
+     ("apps/\\1/tests/models/\\2.js"       . "apps/\\1/fixtures/\\2.js")
+     ("apps/\\1/controllers/\\2s.js"       . "apps/\\1/fixtures/\\2.js")
+     ("apps/\\1/tests/controllers/\\2s.js" . "apps/\\1/fixtures/\\2.js")
+     ("apps/\\1/views/\\2.js"              . "apps/\\1/fixtures/\\2.js")
+     ("apps/\\1/tests/views/\\2.js"        . "apps/\\1/fixtures/\\2.js")
+     ("apps/\\1/resources/\\2.css"         . "apps/\\1/fixtures/\\2.js")
+     ;; TODO: Handle default case.
+     )
+    t)
+   (controller
+    "c"
+    (("apps/\\1/models/\\2.js"             . "apps/\\1/controllers/\\2s.js")
+     ("apps/\\1/tests/models/\\2.js"       . "apps/\\1/controllers/\\2s.js")
+     ("apps/\\1/fixtures/\\2.js"           . "apps/\\1/controllers/\\2s.js")
+     ("apps/\\1/tests/controllers/\\2.js"  . "apps/\\1/controllers/\\2.js")
+     ("apps/\\1/views/\\2.js"              . "apps/\\1/controllers/\\2s.js")
+     ("apps/\\1/tests/views/\\2.js"        . "apps/\\1/controllers/\\2s.js")
+     ("apps/\\1/resources/\\2.css"         . "apps/\\1/controllers/\\2s.js")
+     ;; TODO: Handle default case.
+     )
+    t)
+   (view
+    "v"
+    (("apps/\\1/models/\\2.js"             . "apps/\\1/views/\\2.js")
+     ("apps/\\1/tests/models/\\2.js"       . "apps/\\1/views/\\2.js")
+     ("apps/\\1/fixtures/\\2.js"           . "apps/\\1/views/\\2.js")
+     ("apps/\\1/controllers/\\2s.js"       . "apps/\\1/views/\\2.js")
+     ("apps/\\1/tests/controllers/\\2s.js" . "apps/\\1/views/\\2.js")
+     ("apps/\\1/tests/views/\\2.js"        . "apps/\\1/views/\\2.js")
+     ("apps/\\1/resources/\\2.css"         . "apps/\\1/views/\\2.js")
+     ;; TODO: Handle default case.
+     )
+    t)
+   (stylesheet
+    "s"
+    (("apps/\\1/models/\\2.js"             . "apps/\\1/resources/\\2.css")
+     ("apps/\\1/tests/models/\\2.js"       . "apps/\\1/resources/\\2.css")
+     ("apps/\\1/fixtures/\\2.js"           . "apps/\\1/resources/\\2.css")
+     ("apps/\\1/controllers/\\2s.js"       . "apps/\\1/resources/\\2.css")
+     ("apps/\\1/tests/controllers/\\2s.js" . "apps/\\1/resources/\\2.css")
+     ("apps/\\1/views/\\2.js"              . "apps/\\1/resources/\\2.css")
+     ("apps/\\1/tests/views/\\2.js"        . "apps/\\1/resources/\\2.css")
+     ;; TODO: Handle default case.
+     )
+    t)
+   (core
+    "a" ;; "application"
+    (("apps/\\1/.*" . "apps/\\1/core.js"))
+    nil)
+   (main
+    "i" ;; "initialization"
+    (("apps/\\1/.*" . "apps/\\1/main.js"))
+    nil)
+   (main-page
+    "p" ;; "page"
+    (("apps/\\1/.*" . "apps/\\1/resources/main_page.js"))
+    nil)
    ))
 
 (defun sinasi-apply-jump-schema (schema)
@@ -194,7 +269,9 @@ otherwise turn `sinasi-minor-mode' off if it is on."
 ;;;###autoload
 (define-minor-mode sinasi-minor-mode
   "Enable Sinasi minor mode providing Emacs support for working
-with the SproutCore framework."
+with the SproutCore framework.
+
+\\{sinasi-minor-mode-map}"
   ;; Copied from Rinari and hacked accordingly.  
   nil
   " Sinasi"
