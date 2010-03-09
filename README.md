@@ -26,4 +26,23 @@ You need three things to use Sinasi:
 With any luck, this _might_ be enough to get you running.  I eagerly
 welcome patches that make Sinasi eager to install!
 
-[rinari]: http://rinari.rubyforge.org/
+## Generating a TAGS file
+
+I added the following to my <code>.ctags</code> file:
+
+    --exclude=tmp
+    --langdef=js
+    --langmap=js:.js
+    --regex-js=/^([A-Za-z0-9._$]+) = ([A-Za-z0-9._$]+).(create|extend)\(/\1/
+    --regex-js=/^[ \t]*([A-Za-z$][A-Za-z0-9_$]+)[ \t]*:[ \t]*function[ \t(]/\1/
+
+...and ran:
+
+    ctags -R -e
+
+Note that this includes the full names of classes, which doesn't always
+work gracefully with M-. (for example, you can't look up "Record" directly,
+but must edit it to be "SC.Record").  If you have any advice on how to
+fine-tune this setup, please let me know.
+
+  [rinari]: http://rinari.rubyforge.org/
