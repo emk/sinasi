@@ -79,6 +79,14 @@
       (unless (string-match "\\(^[[:alpha:]]:/$\\|^/[^\/]+:\\|^/$\\)" dir)
 	(sinasi-root new-dir)))))
 
+(defun sinasi-clean-tests ()
+  "Work around a SproutCore test runner bug that causes it to run stale tests."
+  (interactive)
+  (let ((root (sinasi-root)))
+    (unless root
+      (error "Not safe to clean tests outside of a Sinasi project!"))
+    (let ((default-directory root))
+      (compile "rm -f tmp/debug/build/static/*/*/current/tests/*/*.html"))))
 
 ;; Basic file groupings:
 ;;
@@ -223,8 +231,7 @@ behavior."
 
 (defvar sinasi-minor-mode-keybindings
   ;; Copied from Rinari and hacked accordingly.
-  '(;("b" . 'sinasi-build)
-    )
+  '(("c" . 'sinasi-clean-tests))
   "alist mapping of keys to functions in `sinasi-minor-mode'")
 
 ;; Copied from Rinari and hacked accordingly.
