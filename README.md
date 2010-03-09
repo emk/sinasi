@@ -26,6 +26,43 @@ You need three things to use Sinasi:
 With any luck, this _might_ be enough to get you running.  I eagerly
 welcome patches that make Sinasi eager to install!
 
+## Using Sinasi
+
+Open up a JavaScript buffer inside a SproutCore project, and type <code>C-h
+m</code> to get help for the current mode.  You should see something like:
+
+<pre>
+Sinasi minor mode (indicator Sinasi):
+Enable Sinasi minor mode providing Emacs support for working
+with the SproutCore framework.
+
+key             binding
+---             -------
+
+C-c             Prefix Command
+
+C-c ,           Prefix Command
+
+C-c , c         sinasi-clean-tests
+C-c , f         Prefix Command
+
+C-c , f a       sinasi-find-core
+C-c , f c       sinasi-find-controller
+C-c , f f       sinasi-find-fixture
+C-c , f i       sinasi-find-main
+C-c , f m       sinasi-find-model
+C-c , f p       sinasi-find-main-page
+C-c , f s       sinasi-find-stylesheet
+C-c , f t       sinasi-find-test
+C-c , f v       sinasi-find-view
+</pre>
+
+For more information on a specific command, you can run <code>C-h f
+command-name</code>.  You can use <code>sinasi-clean-tests</code> to work
+around stale unit tests in the Test Runner, and you can use
+<code>sinasi-bind-finders-with-prefix</code> to map the find commands to
+something a bit more convenient.
+
 ## Generating a TAGS file
 
 I added the following to my <code>.ctags</code> file:
