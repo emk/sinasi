@@ -235,6 +235,19 @@ behavior."
 			sinasi-jump-schema)
 		sinasi-minor-mode-keybindings))
 
+(defun sinasi-bind-finders-with-prefix (prefix)
+  "Bind the sinasi-find-* commands under an additonal prefix.
+For example, to bind the finders using prefix super-s, run:
+
+    (sinasi-bind-finders-with-prefix ?\\s-s)
+
+This assumes you have a working Super key in your Emacs."
+  (dolist (schema sinasi-jump-schema)
+    (let ((command (read (format "'sinasi-find-%S" (first schema))))
+          (key (read (format "?%s" (second schema)))))
+      (eval `(define-key sinasi-minor-mode-map [,prefix ,key]
+                ,command)))))
+
 ;;;###autoload
 (defun sinasi-launch ()
   "Run `sinasi-minor-mode' if inside of a SproutCore projecct,
