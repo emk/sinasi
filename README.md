@@ -67,11 +67,14 @@ something a bit more convenient.
 
 I added the following to my <code>.ctags</code> file:
 
-    --exclude=tmp
-    --langdef=js
-    --langmap=js:.js
-    --regex-js=/^([A-Za-z0-9._$]+) = ([A-Za-z0-9._$]+).(create|extend)\(/\1/
-    --regex-js=/^[ \t]*([A-Za-z$][A-Za-z0-9_$]+)[ \t]*:[ \t]*function[ \t(]/\1/
+<pre>
+--exclude=tmp
+--langdef=js
+--langmap=js:.js
+--regex-js=/^([A-Za-z0-9._$]+)[ \t]*=[ \t]*SC\.mixin\(/\1/
+--regex-js=/^([A-Za-z0-9._$]+)[ \t]*=[ \t]*([A-Za-z0-9._$]+)\.(create|extend)\(/\1/
+--regex-js=/^[ \t]*([A-Za-z$][A-Za-z0-9_$]+)[ \t]*:[ \t]*function[ \t(]/\1/
+</pre>
 
 ...and ran:
 
