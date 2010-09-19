@@ -41,14 +41,14 @@
 ;; you to flip between models, unit tests, fixtures, controllers, etc., in
 ;; a SproutCore source tree.
 ;;
-;; You need to install Rinari and javascript-mode.el to get this working,
+;; You need to install Rinari and js2.el to get this working,
 ;; at least for now.  Eventually, I might add support for installing via
 ;; ELPA.
 ;;
 ;; Please feel free to fork this project on github and enhance it.
 
 (require 'jump)
-(require 'javascript-mode)
+(load "js2")
 (require 'cl)
 
 ;; Copied from Rinari and hacked accordingly.
